@@ -1,6 +1,6 @@
 package goeuro.appclient.core;
 
-import static goeuro.appclient.util.StringUtils.toStringWithQuote;
+import static goeuro.appclient.util.StringUtils.toStringWithQuotationMarks;
 
 import java.util.List;
 
@@ -58,8 +58,8 @@ public class AppClient {
 
 			if (LOGGER.isDebugEnabled()) {
 
-				LOGGER.debug("Property " + toStringWithQuote(AppClientProperties.GOEURO_APPCLIENT_RESULT_FILE_NAME)
-						+ " = " + toStringWithQuote(fileName));
+				LOGGER.debug("Property " + toStringWithQuotationMarks(AppClientProperties.GOEURO_APPCLIENT_RESULT_FILE_NAME)
+						+ " = " + toStringWithQuotationMarks(fileName));
 			}
 
 			writer.write(fileName, places);

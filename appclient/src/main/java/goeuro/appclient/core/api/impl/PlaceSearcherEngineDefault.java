@@ -1,7 +1,7 @@
 package goeuro.appclient.core.api.impl;
 
 import static goeuro.appclient.util.StringUtils.isBlank;
-import static goeuro.appclient.util.StringUtils.toStringWithQuote;
+import static goeuro.appclient.util.StringUtils.toStringWithQuotationMarks;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -76,7 +76,7 @@ public class PlaceSearcherEngineDefault implements PlaceSearcherEngine {
 		LOGGER.info("Entered");
 
 		if (LOGGER.isInfoEnabled()) {
-			LOGGER.info("Parameter city = " + toStringWithQuote(city));
+			LOGGER.info("Parameter city = " + toStringWithQuotationMarks(city));
 		}
 
 		if (isBlank(city)) {
@@ -84,14 +84,14 @@ public class PlaceSearcherEngineDefault implements PlaceSearcherEngine {
 		}
 
 		if (LOGGER.isDebugEnabled()) {
-			LOGGER.debug("Property " + toStringWithQuote(AppClientProperties.GOEURO_SUGGEST_API_ENDPOINT) + " = "
-					+ toStringWithQuote(AppClientProperties.getSuggestEndpoint()));
+			LOGGER.debug("Property " + toStringWithQuotationMarks(AppClientProperties.GOEURO_SUGGEST_API_ENDPOINT) + " = "
+					+ toStringWithQuotationMarks(AppClientProperties.getSuggestEndpoint()));
 		}
 
 		String endpoint = AppClientProperties.getSuggestEndpoint() + city;
 
 		if (LOGGER.isDebugEnabled()) {
-			LOGGER.debug("Endpoint to call = " + toStringWithQuote(endpoint));
+			LOGGER.debug("Endpoint to call = " + toStringWithQuotationMarks(endpoint));
 		}
 
 		Scanner scanner = null;
@@ -102,13 +102,13 @@ public class PlaceSearcherEngineDefault implements PlaceSearcherEngine {
 			URL url = new URL(endpoint);
 			URLConnection conn = url.openConnection();
 			conn.connect();
-
+			
 			InputStream input = conn.getInputStream();
 			String encoding = AppClientProperties.getResponseEncoding();
 
 			if (LOGGER.isDebugEnabled()) {
-				LOGGER.debug("Property " + toStringWithQuote(AppClientProperties.GOEURO_SUGGEST_RESPONSE_ENCODING)
-						+ " = " + toStringWithQuote(encoding));
+				LOGGER.debug("Property " + toStringWithQuotationMarks(AppClientProperties.GOEURO_SUGGEST_RESPONSE_ENCODING)
+						+ " = " + toStringWithQuotationMarks(encoding));
 			}
 
 			(scanner = new Scanner(input, encoding)).useDelimiter("\\A");
@@ -122,7 +122,7 @@ public class PlaceSearcherEngineDefault implements PlaceSearcherEngine {
 		} catch (IOException e) {
 
 			LOGGER.error(e.getMessage(), e);
-			throw new SystemException("Error while trying to connect to Endpoint: " + toStringWithQuote(endpoint), e);
+			throw new SystemException("Error while trying to connect to Endpoint: " + toStringWithQuotationMarks(endpoint), e);
 
 		} finally {
 			close(scanner);

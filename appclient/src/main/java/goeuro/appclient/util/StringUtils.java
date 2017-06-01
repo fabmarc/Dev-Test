@@ -20,7 +20,7 @@ public class StringUtils {
 		return true;
 	}
 
-	public static String toStringWithQuote(String stringValue) {
+	public static String toStringWithQuotationMarks(String stringValue) {
 		return (stringValue == null ? NULL_STRING : QUOTE_SYMBOL + stringValue + QUOTE_SYMBOL);
 	}
 

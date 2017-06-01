@@ -1,6 +1,6 @@
 package goeuro.appclient.core.api.impl;
 
-import static goeuro.appclient.util.StringUtils.toStringWithQuote;
+import static goeuro.appclient.util.StringUtils.toStringWithQuotationMarks;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -44,7 +44,7 @@ public class PlacesCsvFileWriter implements goeuro.appclient.core.api.PlacesFile
 			}
 
 			if (LOGGER.isDebugEnabled()) {
-				LOGGER.debug("Parameter fileName = " + toStringWithQuote(fileName));
+				LOGGER.debug("Parameter fileName = " + toStringWithQuotationMarks(fileName));
 			}
 
 			fileWriter = new FileWriter(fileName);
@@ -78,7 +78,7 @@ public class PlacesCsvFileWriter implements goeuro.appclient.core.api.PlacesFile
 		} catch (IOException e) {
 
 			LOGGER.error(e.getMessage(), e);
-			throw new SystemException("Error while trying to write the file: " + toStringWithQuote(fileName), e);
+			throw new SystemException("Error while trying to write the file: " + toStringWithQuotationMarks(fileName), e);
 
 		} finally {
 			close(fileWriter);
